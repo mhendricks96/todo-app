@@ -1,18 +1,18 @@
 import React from 'react';
 import ToDo from './components/Todo';
 
-import Settings from './context/settings';
-import '@blueprintjs/core/lib/css/blueprint.css';
+import Main from './components/Main'
+import SiteContextProvider from './context/SiteContext';
+// import '@blueprintjs/core/lib/css/blueprint.css';
 
-export default function App() {
-  
-  return (
-    <>
-      <Settings>
-        <ToDo />
-      </Settings>
-    </>
-  ) 
+export default class App extends React.Component {
+  render() {
+    return (
+        <SiteContextProvider>
+          <Main />
+        </SiteContextProvider>
+    );
+  }
 }
 
 

@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './reset.scss';
 
-import App from './App';
+import App from './App.jsx';
 
-function Main() {
-  return <App />;
+class Main extends React.Component {
+  render() {
+    return <App />;
+  }
 }
 
 const rootElement = document.getElementById('root');
