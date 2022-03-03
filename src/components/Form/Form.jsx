@@ -1,55 +1,34 @@
 import React from "react";
-import { Button, Card, Elevation } from "@blueprintjs/core";
+import Button from "@mui/material/Button";
 
 
+function Form(props){
 
-function Form(props) {
   return (
-    <div >
+    <form onSubmit={props.handleSubmit}>
 
-    <Card style={{width: '1000px', margin: '30px'}} interactive={true} elevation={Elevation.TWO}>
-      <form onSubmit={props.handleSubmit}>
-        <h2>I Have something to do!</h2>
+        <h2>Add To Do Item</h2>
 
         <label>
-          <span>Goal</span>
-          <input
-            onChange={props.handleChange}
-            name="text"
-            type="text"
-            placeholder="description"
-            />
+          <span>To Do Item</span>
+          <input onChange={props.handleChange} name="text" type="text" placeholder="Item Details" />
         </label>
 
         <label>
           <span>Assigned To</span>
-          <input
-            onChange={props.handleChange}
-            name="assignee"
-            type="text"
-            placeholder="Assignee Name"
-            />
+          <input onChange={props.handleChange} name="assignee" type="text" placeholder="Assignee Name" />
         </label>
 
         <label>
           <span>Difficulty</span>
-          <input
-            onChange={props.handleChange}
-            defaultValue={3}
-            type="range"
-            min={1}
-            max={5}
-            name="difficulty"
-            />
+          <input onChange={props.handleChange} defaultValue={3} type="range" min={1} max={5} name="difficulty" />
         </label>
 
         <label>
-          <button type="submit">Add Item</button>
+          <Button type="submit">Add Item</Button>
         </label>
       </form>
-    </Card>
-            </div>
-  );
+  )
 }
 
 export default Form;

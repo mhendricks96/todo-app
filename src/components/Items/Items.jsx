@@ -1,15 +1,28 @@
-import React, {useState} from "react";
-import { Button, Card, Elevation } from "@blueprintjs/core";
+import React, {useState, useContext} from "react";
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import { SiteContext } from '../../context/SiteContext';
+
 
 function Items(props) {
 
-  const [showIndex, setShowIndex] = useState(0);
-  const [pageNum, setPageNum] = useState(1);
-  const numToShow = 3; 
+  let totalItems = 0;
+  let siteContext = useContext(SiteContext);
+  const numToShow = siteContext.state.numItemsToDisplay;
+  const displayComplete = siteContext.state.displayComplete;
+
+  const setTotalItems = (num) => {
+    totalItems = num
+  }
+
+  const [pageNum, setPageNum] = useState(0);
+
+
+  // const [showIndex, setShowIndex] = useState(0);
 
   let items = props.list.map((item) => (
     <div >
-    <Card style={{width: '1000px', margin: '30px'}} interactive={true} elevation={Elevation.TWO}>
+    <Card style={{width: '1000px', margin: '30px'}} interactive={true} >
         <h5>Item</h5>
               <p>
                 Assigned to: {item.assignee}
@@ -28,7 +41,7 @@ function Items(props) {
   function setItems(itemList, num){
     if(items.length <= 3) return items;
     let tempArr = [];
-    for(let i = showIndex; i <(showIndex + num); i++){
+    for(let i = 0; i < 3; i++){
       tempArr.push(itemList[i])
     }
     return tempArr;
